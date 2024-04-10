@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from 'react-bootstrap/Card';
-
+import { Container, Card, CardLink } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 function App() {
 
   const [data, setData] = useState(null);
@@ -48,35 +49,35 @@ function App() {
   }
 
   return (
-    <html>
-    <div>
-       <Box sx={{ '& button': { m: 1 } }}>
-       <div>
-          <Button onClick={catsClicked} variant="contained" size="large">
-          Cats
-          </Button>
-          <Button onClick={dogsClicked} variant="contained" size="large">
-          Dogs
-          </Button>
-       </div>
-       </Box>
-       {data && data.map((item, index) => (
-       <Card class="card">
-          <Card.Body>
-            <Card.Img class="cardImage" variant="top" src={item.image} />
-             <Card.Title class="cardTitle">{item.name}</Card.Title>   
-             <Card.Text class="cardText">
-             The life span of {item.name} is between {Math.trunc(item.min_life_span)} and {Math.trunc(item.max_life_span)} years.
-            </Card.Text> 
-            <Card.Link class="cardLink" href={item.image}>Full Image</Card.Link>
-            <Card.Text>
-            </Card.Text>
-          </Card.Body>
-       </Card>
-       ))}
-    </div>
- </html>
+  <div class="div">
+   <Box sx={{ '& button': { m: 1 } }}>
+   <Button onClick={catsClicked} variant="contained" size="large">
+   Cats
+   </Button>
+   <Button onClick={dogsClicked} variant="contained" size="large">
+   Dogs
+   </Button>
+   </Box>
+   <Container>
+      <Row>
+         {data && data.map((item, index) => (
+         <Col key={index} sm={6} md={4} lg={3}>
+         <Card>
+            <Card.Body>
+               <Card.Img className="cardImage" variant="top" src={item.image} />
+               <Card.Title className="cardTitle">{item.name}</Card.Title>
+               <Card.Text className="cardText">
+                  The life span is between {Math.trunc(item.min_life_span)} and {Math.trunc(item.max_life_span)} years.
+               </Card.Text>
+               <Card.Link className="cardLink" href={item.image}>Full Image</Card.Link>
+            </Card.Body>
+         </Card>
+         </Col>
+         ))}
+      </Row>
+   </Container>
+</div>
   );
-      }
+ }
 
 export default App;
