@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { Container, Card, CardLink } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+
 function App() {
 
   const [data, setData] = useState(null);
@@ -31,7 +32,6 @@ function App() {
         setLoading(false);
       }
     }
-
 
   const dogsClicked = async () => {
       setLoading(true);
