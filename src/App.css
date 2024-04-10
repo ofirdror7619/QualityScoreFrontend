@@ -11,8 +11,8 @@
 
 
 .row {
-  display: flex; /* Use flexbox to create a row */
-  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+  display: flex; 
+  flex-wrap: wrap; 
 }
 
 .col {
