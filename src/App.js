@@ -11,12 +11,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const CATS_URL = 'http://localhost:8080/cats';
+  const DOGS_URL = 'http://localhost:8080/dogs';
+
   const catsClicked = async () => {
       setLoading(true);
       setError(null);
   
       try {
-        const response = await fetch('http://localhost:8080/cats');
+        const response = await fetch(CATS_URL);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -35,7 +38,7 @@ function App() {
       setError(null);
   
       try {
-        const response = await fetch('http://localhost:8080/dogs');
+        const response = await fetch(DOGS_URL);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -49,19 +52,15 @@ function App() {
   }
 
   return (
-  <div class="div">
+  <div className="div">
    <Box sx={{ '& button': { m: 1 } }}>
-   <Button onClick={catsClicked} variant="contained" size="large">
-   Cats
-   </Button>
-   <Button onClick={dogsClicked} variant="contained" size="large">
-   Dogs
-   </Button>
+   <Button onClick={catsClicked} variant="contained" size="large">Cats</Button>
+   <Button onClick={dogsClicked} variant="contained" size="large">Dogs</Button>
    </Box>
    <Container>
       <Row>
          {data && data.map((item, index) => (
-         <Col key={index} sm={6} md={4} lg={3}>
+         <Col key={index} lg={3}>
          <Card>
             <Card.Body>
                <Card.Img className="cardImage" variant="top" src={item.image} />
